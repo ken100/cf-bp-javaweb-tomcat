@@ -1,5 +1,5 @@
 ---
-base: 
+base: http://download.run.pivotal.io
 default:
-  jdk: https://s3.amazonaws.com/heroku-jvm-langpack-java/binaries/tomcat/apache-tomcat-7.0.41.tar.gz
-  tomcat: http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.41/bin/apache-tomcat-7.0.41.tar.gz
+  jdk: /openjdk/lucid/x86_64/openjdk-1.7.0_55.tar.gz
+  tomcat: /tomcat/tomcat-7.0.54.tar.gz
