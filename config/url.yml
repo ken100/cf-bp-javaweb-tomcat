@@ -1,5 +1,5 @@
 ---
-base: https://s3.amazonaws.com/heroku-jvm-langpack-java
+base: 
 default:
-  jdk: /binaries/jdk/7/openjdk7-u7-heroku-temaki-b30.tar.gz
-  tomcat: /binaries/tomcat/apache-tomcat-7.0.41.tar.gz
+  jdk: https://s3.amazonaws.com/heroku-jvm-langpack-java/binaries/tomcat/apache-tomcat-7.0.41.tar.gz
+  tomcat: http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.41/bin/apache-tomcat-7.0.41.tar.gz
