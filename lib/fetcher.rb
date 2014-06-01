@@ -27,7 +27,9 @@ class Fetcher
   end
 
   def self.install_tomcat(global)
+    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     puts 'Installing Tomcat...'
+    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
 
     # tmp_tomcat = fetch(global.tmp_tomcat_path, global.remote_tomcat_url)
     # cp from /op/cf-static/apache-tomcat-7.0.41.tar.gz
