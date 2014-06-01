@@ -45,7 +45,7 @@ class Fetcher
 
     FileUtils.rm_rf global.target_tomcat_tarball
 
-    unless File.exists?("#{global.tomcat_dir}/bin/catalina.sh")
+    unless File.exists?("#{global.tomcat_dir}/apache-tomcat-7.0.54/bin/catalina.sh")
       puts 'Unable to retrieve the tomcat'
       puts tar_output
       exit 1
