@@ -30,12 +30,12 @@ class Fetcher
     puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     puts 'Installing Tomcat...'
     puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    
+    tmp_tomcat = fetch(global.tmp_tomcat_path, global.remote_tomcat_url)
 
-    # tmp_tomcat = fetch(global.tmp_tomcat_path, global.remote_tomcat_url)
-    # cp from /op/cf-static/apache-tomcat-7.0.41.tar.gz
     dir = File.dirname(global.target_tomcat_tarball)
     FileUtils.mkdir_p(dir)
-    FileUtils.cp('/opt/cf-static/tomcat/7.0.41/apache-tomcat-7.0.41.tar.gz', global.target_tomcat_tarball)
+    FileUtils.mv(tmp_tomcat, global.target_tomcat_tarball)
 
     puts "Unpacking Tomcat to #{global.tomcat_dir}..."
     tar_output = SystemUtil.run_with_err_output "tar pxzf #{global.target_tomcat_tarball} -C #{global.tomcat_dir}"
