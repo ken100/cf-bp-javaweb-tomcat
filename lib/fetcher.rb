@@ -40,6 +40,9 @@ class Fetcher
     puts "Unpacking Tomcat to #{global.tomcat_dir}..."
     tar_output = SystemUtil.run_with_err_output "tar pxzf #{global.target_tomcat_tarball} -C #{global.tomcat_dir}"
 
+    puts global.target_tomcat_tarball
+    puts global.tomcat_dir
+
     FileUtils.rm_rf global.target_tomcat_tarball
 
     unless File.exist?("#{global.tomcat_dir}/bin/catalina.sh")
