@@ -38,8 +38,8 @@ class JavaPack
   def bash_script
     <<-BASH
 #!/usr/bin/env bash
-export JAVA_HOME="#{global.jdk_dir}/.jdk"
-export PATH="#{global.jdk_dir}/.jdk/bin:$PATH"
+export JAVA_HOME="#{global.jdk_dir}"
+export PATH="#{global.jdk_dir}/bin:$PATH"
 
 echo JAVA_HOME 
 echo PATH
