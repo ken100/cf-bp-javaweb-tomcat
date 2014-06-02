@@ -38,8 +38,8 @@ class JavaPack
   def bash_script
     <<-BASH
 #!/usr/bin/env bash
-export JAVA_HOME="/tmp/staged/app/.jdk"
-export PATH="/tmp/staged/app/.jdk/bin:$PATH"
+export JAVA_HOME="$HOME/.jdk"
+export PATH="$HOME/.jdk/bin:$PATH"
 MEMORY_DIGIT=`echo $MEMORY_LIMIT |sed 's/[m|M]//g'`
 xmx=`expr $MEMORY_DIGIT / 2`
 max_mem=800
