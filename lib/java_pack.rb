@@ -41,6 +41,10 @@ class JavaPack
 export JAVA_HOME="#{global.jdk_dir}"
 export PATH="#{global.jdk_dir}/bin:$PATH"
 
+for file in `find /tmp/ -type d`; do
+  echo "$file"
+done
+
 echo JAVA_HOME 
 echo PATH
 
