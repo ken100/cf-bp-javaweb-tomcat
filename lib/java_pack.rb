@@ -40,6 +40,10 @@ class JavaPack
 #!/usr/bin/env bash
 export JAVA_HOME="#{global.jdk_dir}/.jdk"
 export PATH="#{global.jdk_dir}/.jdk/bin:$PATH"
+
+echo JAVA_HOME 
+echo PATH
+
 MEMORY_DIGIT=`echo $MEMORY_LIMIT |sed 's/[m|M]//g'`
 xmx=`expr $MEMORY_DIGIT / 2`
 max_mem=800
