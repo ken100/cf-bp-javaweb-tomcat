@@ -29,9 +29,9 @@ class JavaPack
   #'-Xms' => '$MEMORY_LIMIT',
   def java_opts
     {
-        '-Djava.security.egd=' => 'file:/dev/./urandom',
-        '-Djava.io.tmpdir=' => '\"$TMPDIR\"',
-        '-Xss' => '256k'
+        '-Xmx' => '$MEMORY_LIMIT',
+        '-Xms' => '$MEMORY_LIMIT',
+        '-Djava.io.tmpdir=' => '\"$TMPDIR\"'
     }
   end
 
