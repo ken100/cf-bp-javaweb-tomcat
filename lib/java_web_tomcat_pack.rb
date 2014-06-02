@@ -18,7 +18,7 @@ class JavaWebTomcatPack < JavaPack
     Fetcher.install_tomcat(global)
     copy_webapp_to_tomcat
     move_tomcat_to_root
-    copy_resources
+    #copy_resources
     setup_profiled
   end
 
