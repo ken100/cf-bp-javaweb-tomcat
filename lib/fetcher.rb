@@ -18,6 +18,8 @@ class Fetcher
     tar_output = SystemUtil.run_with_err_output "tar pxzf #{global.target_jdk_tarball} -C #{global.jdk_dir}"
 
     FileUtils.rm_rf global.target_jdk_tarball
+    
+    puts "#{global.jdk_dir}/bin/java"
 
     unless File.exists?("#{global.jdk_dir}/bin/java")
       puts 'Unable to retrieve the JDK'
