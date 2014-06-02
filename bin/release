@@ -6,7 +6,7 @@ yml = {
     'addons' => [],
     'config_vars' => {},
     'default_process_types' => {
-        'web' => './apache-tomcat-7.0.54/bin/catalina.sh run'
+        'web' => './bin/catalina.sh run'
     }
 }.to_yaml
 
