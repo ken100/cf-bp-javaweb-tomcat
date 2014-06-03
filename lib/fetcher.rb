@@ -3,6 +3,7 @@ require 'uri'
 require 'yaml'
 require 'fileutils'
 require 'system_util'
+require 'find'
 
 class Fetcher
 
