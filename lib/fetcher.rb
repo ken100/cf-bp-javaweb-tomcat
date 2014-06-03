@@ -47,7 +47,8 @@ class Fetcher
 
     puts global.target_tomcat_tarball
     puts global.tomcat_dir
-    SystemUtil.run_with_err_output("cp #{global.tomcat_dir}/apache-tomcat-7.0.54/* #{global.tomcat_dir} && rm -rf #{global.tomcat_dir}/apache-tomcat-7.0.54")
+    SystemUtil.run_with_err_output("cp #{global.tomcat_dir}/apache-tomcat-7.0.54/* #{global.tomcat_dir}/ ")
+    SystemUtil.run_with_err_output("rm -rf #{global.tomcat_dir}/apache-tomcat-7.0.54")
 
     FileUtils.rm_rf global.target_tomcat_tarball
 
