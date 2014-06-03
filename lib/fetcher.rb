@@ -39,18 +39,17 @@ class Fetcher
     puts "Unpacking Tomcat to #{global.tomcat_dir}..."
     tar_output = SystemUtil.run_with_err_output "tar pxzf #{global.target_tomcat_tarball} -C #{global.tomcat_dir}"
 
+    FileUtils.rm_rf global.target_tomcat_tarball
+    
     # if uncompressed files is under an other tomcat folder, such lisk "apache-tomcat-7.0.54", take the files out of it.
     unless File.exists?("#{global.tomcat_dir}/bin")
       Dir::entries("#{global.tomcat_dir}").delete_if do |dir| dir =~ /^\./ end.each do |dir| 
         puts dir
       end 
       #puts file_list
-      
       SystemUtil.run_with_err_output("cp -rp #{global.tomcat_dir}/apache-tomcat-7.0.54/* #{global.tomcat_dir}/ && rm -rf #{global.tomcat_dir}/apache-tomcat-7.0.54")
     end
-
-    FileUtils.rm_rf global.target_tomcat_tarball
-
+    
     unless File.exists?("#{global.tomcat_dir}/bin/catalina.sh")
       puts 'Unable to retrieve the tomcat'
       puts tar_output
