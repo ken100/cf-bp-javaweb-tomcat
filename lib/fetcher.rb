@@ -39,12 +39,7 @@ class Fetcher
 
     FileUtils.rm_rf global.target_tomcat_tarball
     
-    # if uncompressed files is under an other tomcat folder, such lisk "apache-tomcat-7.0.54", take the files out of it.
-    unless File.exists?("#{global.tomcat_dir}/bin")
-      Dir::entries("#{global.tomcat_dir}").delete_if do |dir| dir =~ /^\./ end.each do |dir| 
-        SystemUtil.run_with_err_output("cp -rp #{global.tomcat_dir}/#{dir}/* #{global.tomcat_dir}/ && rm -rf #{global.tomcat_dir}/#{dir}")
-      end 
-    end
+    organize_tomcat_files(global.tomcat_dir)
     
     unless File.exists?("#{global.tomcat_dir}/bin/catalina.sh")
       puts 'Unable to retrieve the tomcat'
@@ -56,7 +51,17 @@ class Fetcher
 
   end
 
-  def self.remove_tomcat_files(tomcat_dir)
+  # if uncompressed files is under an other tomcat folder, such lisk "apache-tomcat-7.0.54", take the files out of it.
+  def self.organize_tomcat_files(tomcat_dir)
+    unless File.exists?("#{tomcat_dir}/bin")
+      Dir::entries("#{tomcat_dir}").delete_if do |dir| dir =~ /^\./ end.each do |dir| 
+        SystemUtil.run_with_err_output("cp -rp #{tomcat_dir}/#{dir}/* #{tomcat_dir}/ && rm -rf #{tomcat_dir}/#{dir}")
+      end 
+    end
+  end
+
+  # find out unnecessary files from tomcat's folder and remove them
+  def self.remove_unnecessary_tomcat_files(tomcat_dir)
     %w[NOTICE RELEASE-NOTES RUNNING.txt LICENSE webapps/. work/. logs].each do |file|
       FileUtils.rm_rf("#{tomcat_dir}/#{file}")
     end
