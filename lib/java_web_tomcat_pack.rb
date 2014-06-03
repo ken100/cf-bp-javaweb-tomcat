@@ -16,13 +16,19 @@ class JavaWebTomcatPack < JavaPack
   def compile
     Fetcher.install_jdk(global)
     Fetcher.install_tomcat(global)
-    #copy_webapp_to_tomcat
+    copy_webapp_to_tomcat
     move_tomcat_to_root
-    #copy_resources
+    copy_resources
     setup_profiled
   end
 
   def copy_webapp_to_tomcat
+    
+    puts "****************************"
+    puts "#{global.tomcat_dir}"
+    puts "#{global.build_path}"
+    puts "****************************"
+    
     SystemUtil.run_with_err_output("mkdir -p #{global.tomcat_dir}/webapps/ROOT && mv #{global.build_path}/ #{global.tomcat_dir}/webapps/ROOT")
   end
 
