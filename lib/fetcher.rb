@@ -42,7 +42,7 @@ class Fetcher
     # if uncompressed files is under an other tomcat folder, such lisk "apache-tomcat-7.0.54", take the files out of it.
     if !File.exists?("#{global.tomcat_dir}/bin")
       #file_list = 
-      Dir::entries("#{global.tomcat_dir}/bin").each do |file| puts file end 
+      Dir::entries("#{global.tomcat_dir}").each do |file| puts file end 
       #puts file_list
       
       SystemUtil.run_with_err_output("cp -rp #{global.tomcat_dir}/apache-tomcat-7.0.54/* #{global.tomcat_dir}/ && rm -rf #{global.tomcat_dir}/apache-tomcat-7.0.54")
