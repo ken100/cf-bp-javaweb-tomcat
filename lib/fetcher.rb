@@ -41,7 +41,7 @@ class Fetcher
 
     puts "Unpacking Tomcat to #{global.tomcat_dir}..."
     
-    puts "target_tomcat_tarball：#{global.target_tomcat_tarball}"
+    puts "target_tomcat_tarball #{global.target_tomcat_tarball}"
     
     tar_output = SystemUtil.run_with_err_output "tar pxzf #{global.target_tomcat_tarball} -C #{global.tomcat_dir}"
 
