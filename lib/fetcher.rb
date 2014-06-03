@@ -30,7 +30,6 @@ class Fetcher
 
   def self.install_tomcat(global)
     puts 'Installing Tomcat...'
-    
     tmp_tomcat = fetch(global.tmp_tomcat_path, global.remote_tomcat_url)
 
     dir = File.dirname(global.target_tomcat_tarball)
@@ -38,10 +37,12 @@ class Fetcher
     FileUtils.mv(tmp_tomcat, global.target_tomcat_tarball)
 
     puts "Unpacking Tomcat to #{global.tomcat_dir}..."
-    
     tar_output = SystemUtil.run_with_err_output "tar pxzf #{global.target_tomcat_tarball} -C #{global.tomcat_dir}"
 
-    SystemUtil.run_with_err_output("cp -rp #{global.tomcat_dir}/apache-tomcat-7.0.54/* #{global.tomcat_dir}/ && rm -rf #{global.tomcat_dir}/apache-tomcat-7.0.54")
+    # if uncompressed files is under an other tomcat folder, such lisk "apache-tomcat-7.0.54", take the files out of it.
+    if !File.exists?("#{global.tomcat_dir}/bin")
+      SystemUtil.run_with_err_output("cp -rp #{global.tomcat_dir}/apache-tomcat-7.0.54/* #{global.tomcat_dir}/ && rm -rf #{global.tomcat_dir}/apache-tomcat-7.0.54")
+    end
 
     FileUtils.rm_rf global.target_tomcat_tarball
 
