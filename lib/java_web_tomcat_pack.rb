@@ -19,7 +19,7 @@ class JavaWebTomcatPack < JavaPack
     #copy_webapp_to_tomcat
     #move_tomcat_to_root
     #copy_resources
-    #setup_profiled
+    setup_profiled
   end
 
   def copy_webapp_to_tomcat
