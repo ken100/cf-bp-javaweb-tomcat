@@ -29,9 +29,7 @@ class Fetcher
   end
 
   def self.install_tomcat(global)
-    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     puts 'Installing Tomcat...'
-    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     
     tmp_tomcat = fetch(global.tmp_tomcat_path, global.remote_tomcat_url)
 
@@ -41,14 +39,9 @@ class Fetcher
 
     puts "Unpacking Tomcat to #{global.tomcat_dir}..."
     
-    puts "target_tomcat_tarball #{global.target_tomcat_tarball}"
-    
     tar_output = SystemUtil.run_with_err_output "tar pxzf #{global.target_tomcat_tarball} -C #{global.tomcat_dir}"
 
-    puts global.target_tomcat_tarball
-    puts global.tomcat_dir
-    SystemUtil.run_with_err_output("cp -rp #{global.tomcat_dir}/apache-tomcat-7.0.54/* #{global.tomcat_dir}/ ")
-    SystemUtil.run_with_err_output("rm -rf #{global.tomcat_dir}/apache-tomcat-7.0.54")
+    SystemUtil.run_with_err_output("cp -rp #{global.tomcat_dir}/apache-tomcat-7.0.54/* #{global.tomcat_dir}/ && rm -rf #{global.tomcat_dir}/apache-tomcat-7.0.54")
 
     FileUtils.rm_rf global.target_tomcat_tarball
 
