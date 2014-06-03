@@ -30,11 +30,11 @@ class JavaWebTomcatPack < JavaPack
     puts "****************************"
     
     #SystemUtil.run_with_err_output("mkdir -p #{global.tomcat_dir}/webapps/ROOT && mv #{global.build_path}/* #{global.tomcat_dir}/webapps/ROOT")
-    SystemUtil.run_with_err_output("rm -rf #{global.tomcat_dir}/apache-tomcat-7.0.54/webapps/ROOT/* && mv #{global.build_path}/* #{global.tomcat_dir}/apache-tomcat-7.0.54/webapps/ROOT")
+    SystemUtil.run_with_err_output("rm -rf #{global.tomcat_dir}/webapps/ROOT/* && mv #{global.build_path}/* #{global.tomcat_dir}/webapps/ROOT")
   end
 
   def move_tomcat_to_root
-    SystemUtil.run_with_err_output("mv #{global.tomcat_dir}/apache-tomcat-7.0.54/* #{global.build_path} && rm -rf #{global.tomcat_dir}")
+    SystemUtil.run_with_err_output("mv #{global.tomcat_dir}/* #{global.build_path} && rm -rf #{global.tomcat_dir}")
   end
 
   def copy_resources
