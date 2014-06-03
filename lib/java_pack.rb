@@ -1,7 +1,5 @@
 #! /usr/bin/ruby
 # coding: utf-8
-# author: Ulric Qin
-# mail: qinxiaohui@xiaomi.com
 
 require 'fetcher'
 require 'fileutils'
