@@ -29,7 +29,7 @@ class JavaWebTomcatPack < JavaPack
     puts "#{global.build_path}"
     puts "****************************"
     
-    SystemUtil.run_with_err_output("mkdir -p #{global.tomcat_dir}/webapps/ROOT && mv #{global.build_path}/ #{global.tomcat_dir}/webapps/ROOT")
+    SystemUtil.run_with_err_output("mkdir -p #{global.tomcat_dir}/webapps/ROOT && mv #{global.build_path}/* #{global.tomcat_dir}/webapps/ROOT")
   end
 
   def move_tomcat_to_root
