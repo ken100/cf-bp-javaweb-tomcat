@@ -16,8 +16,8 @@ class JavaWebTomcatPack < JavaPack
   def compile
     Fetcher.install_jdk(global)
     Fetcher.install_tomcat(global)
-    copy_webapp_to_tomcat
-    #move_tomcat_to_root
+    #copy_webapp_to_tomcat
+    move_tomcat_to_root
     #copy_resources
     #setup_profiled
   end
