@@ -47,7 +47,7 @@ class Fetcher
       exit 1
     end
 
-    remove_tomcat_files(global.tomcat_dir)
+    remove_unnecessary_tomcat_files(global.tomcat_dir)
 
   end
 
