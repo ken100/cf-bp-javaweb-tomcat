@@ -18,8 +18,6 @@ class Fetcher
     tar_output = SystemUtil.run_with_err_output "tar pxzf #{global.target_jdk_tarball} -C #{global.jdk_dir}"
 
     FileUtils.rm_rf global.target_jdk_tarball
-    
-    puts "#{global.jdk_dir}/bin/java"
 
     unless File.exists?("#{global.jdk_dir}/bin/java")
       puts 'Unable to retrieve the JDK'
@@ -44,10 +42,8 @@ class Fetcher
     # if uncompressed files is under an other tomcat folder, such lisk "apache-tomcat-7.0.54", take the files out of it.
     unless File.exists?("#{global.tomcat_dir}/bin")
       Dir::entries("#{global.tomcat_dir}").delete_if do |dir| dir =~ /^\./ end.each do |dir| 
-        puts dir
+        SystemUtil.run_with_err_output("cp -rp #{global.tomcat_dir}/#{dir}/* #{global.tomcat_dir}/ && rm -rf #{global.tomcat_dir}/#{dir}")
       end 
-      #puts file_list
-      SystemUtil.run_with_err_output("cp -rp #{global.tomcat_dir}/apache-tomcat-7.0.54/* #{global.tomcat_dir}/ && rm -rf #{global.tomcat_dir}/apache-tomcat-7.0.54")
     end
     
     unless File.exists?("#{global.tomcat_dir}/bin/catalina.sh")
