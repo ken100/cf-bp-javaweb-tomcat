@@ -1,7 +1,5 @@
 #! /usr/bin/ruby -w
 # coding: utf-8
-# author: Ulric Qin
-# mail: qinxiaohui@xiaomi.com
 
 require 'java_pack'
 require 'system_util'
