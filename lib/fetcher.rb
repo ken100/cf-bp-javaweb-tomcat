@@ -51,7 +51,7 @@ class Fetcher
 
   end
 
-  # if uncompressed files is under an other tomcat folder, such lisk "apache-tomcat-7.0.54", take the files out of it.
+  # if uncompressed files are below an other folder, such lisk "apache-tomcat-7.0.54", take the files out of it.
   def self.organize_tomcat_files(tomcat_dir)
     unless File.exists?("#{tomcat_dir}/bin")
       Dir::entries("#{tomcat_dir}").delete_if do |dir| dir =~ /^\./ end.each do |dir| 
