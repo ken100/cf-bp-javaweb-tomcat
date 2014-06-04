@@ -26,26 +26,11 @@
   <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
 
   <Service name="Catalina">
-
-
     <Connector port="${http.port}" protocol="HTTP/1.1" connectionTimeout="20000" bindOnInit="false" URIEncoding="UTF-8"/>
-    <!--
-    <Connector port="${http.port}"
-               protocol="org.apache.coyote.http11.Http11NioProtocol"
-               connectionTimeout="20000"
-               URIEncoding="UTF-8"
-               useBodyEncodingForURI="true"
-               enableLookups="false" />
-    -->
     <Engine name="Catalina" defaultHost="localhost">
-
       <Valve className="org.apache.catalina.valves.RemoteIpValve" protocolHeader="x-forwarded-proto"/>
-
-      <Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true">
-      </Host>
-
+      <Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true"/>
     </Engine>
-
   </Service>
 
 </Server>
