@@ -1,10 +1,14 @@
-#!/usr/bin/env bash
-
-BUILD_DIR=$1
-if [ -d "${BUILD_DIR}/WEB-INF" ] && [ -f "${BUILD_DIR}/WEB-INF/web.xml" ]; then
-    echo "JavaWeb"
-    exit 0
-fi
-
-echo "no"
-exit 1
+#!/usr/bin/env scala
+ 
+!#
+import java.io.File
+  
+val build_dir = args(0)
+val fld = new File(build_dir + "/WEB-INF")
+val fl = new File(build_dir + "/WEB-INF/web.xml")
+  
+if(fld.isDirectory && fl.exists) { 
+  println("Ok, it is a java web application."); 0
+} else { 
+  println("Sorry, it is not a java web application."); 1
+}
