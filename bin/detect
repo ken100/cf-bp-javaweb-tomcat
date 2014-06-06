@@ -2,9 +2,9 @@
 
 BUILD_DIR=$1
 if [ -d "${BUILD_DIR}/WEB-INF" ] && [ -f "${BUILD_DIR}/WEB-INF/web.xml" ]; then
-    echo "JavaWeb"
+    echo "Ok, it is a java web application."
     exit 0
 fi
 
-echo "no"
+echo "Sorry, it is not a java web application."
 exit 1
