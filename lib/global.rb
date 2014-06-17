@@ -2,11 +2,12 @@ require 'yaml'
 
 class Global
 
-  attr_reader :build_path, :cache_path
+  attr_reader :build_path, :cache_path, :env_path
 
-  def initialize(build_path, cache_path)
+  def initialize(build_path, cache_path, env_path)
     @build_path = build_path
     @cache_path = cache_path
+    @env_path = env_path
   end
 
   def url_yml_path
