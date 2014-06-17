@@ -11,6 +11,7 @@ require 'java_web_tomcat_pack'
 puts "::::::::::::::::::::::::::::::::param1 : " + ARGV[0]
 puts "::::::::::::::::::::::::::::::::param2 : " + ARGV[1]
 puts "::::::::::::::::::::::::::::::::param3 : " + ARGV[2]
+puts "::::::::::::::::::::::::::::::::param4 : " + ARGV[3]
 
 pack = JavaWebTomcatPack.new(Global.new(ARGV[0], ARGV[1]))
 pack.compile
