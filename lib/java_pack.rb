@@ -36,8 +36,8 @@ class JavaPack
   def bash_script
     <<-BASH
 #!/usr/bin/env bash
-export JAVA_HOME="#{global.build_path}.jdk"
-export PATH="#{global.build_path}.jdk/bin:$PATH"
+export JAVA_HOME="#{global.build_path}/.jdk"
+export PATH="#{global.build_path}/.jdk/bin:$PATH"
 export JAVA_OPTS=${JAVA_OPTS:-"#{java_opts.map{ |k, v| "#{k}#{v}" }.join(' ')}"}
 export LANG="${LANG:-en_US.UTF-8}"
 
