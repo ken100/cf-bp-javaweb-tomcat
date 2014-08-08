@@ -1,14 +1,15 @@
-#!/usr/bin/env scala
+#!/usr/bin/env ruby
  
-!#
-import java.io.File
-  
-val build_dir = args(0)
-val fld = new File(build_dir + "/WEB-INF")
-val fl = new File(build_dir + "/WEB-INF/web.xml")
-  
-if(fld.isDirectory && fl.exists) { 
-  println("Ok, it is a java web application."); 0
-} else { 
-  println("Sorry, it is not a java web application."); 1
-}
+# sync output
+$stdout.sync = true
+$stderr.sync = true
+ 
+build_dir = ARGV[0]
+#if Dir.exists?("#{build_dir}/WEB-INF") and File.exists?("#{build_dir}/WEB-INF/web.xml")
+if File.exists?("#{build_dir}/solr.war")
+  puts 'Ok, it is a solr application.'
+  exit 0
+end
+ 
+puts 'Sorry, it is not a solr application.'
+exit 1
