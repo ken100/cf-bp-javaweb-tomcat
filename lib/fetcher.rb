@@ -7,7 +7,7 @@ require 'system_util'
 class Fetcher
 
   def self.install_jdk(global)
-    puts "Jdk をインストールします..."
+    puts 'Jdk をインストールします...'
     tmp_jdk = fetch(global.tmp_jdk_path, global.remote_jdk_url)
 
     dir = File.dirname(global.target_jdk_tarball)
@@ -27,7 +27,7 @@ class Fetcher
   end
 
   def self.install_tomcat(global)
-    puts "Tomcat をインストールします..."
+    puts 'Tomcat をインストールします...'
     tmp_tomcat = fetch(global.tmp_tomcat_path, global.remote_tomcat_url)
 
     dir = File.dirname(global.target_tomcat_tarball)
