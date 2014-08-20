@@ -7,14 +7,14 @@ require 'system_util'
 class Fetcher
 
   def self.install_jdk(global)
-    puts 'Installing JDK...'
+    puts "Jdk をインストールします..."
     tmp_jdk = fetch(global.tmp_jdk_path, global.remote_jdk_url)
 
     dir = File.dirname(global.target_jdk_tarball)
     FileUtils.mkdir_p(dir)
     FileUtils.mv(tmp_jdk, global.target_jdk_tarball)
 
-    puts "Unpacking JDK to #{global.jdk_dir}..."
+    puts "ダウンロードした Jdk を #{global.jdk_dir} に解凍します..."
     tar_output = SystemUtil.run_with_err_output "tar pxzf #{global.target_jdk_tarball} -C #{global.jdk_dir}"
 
     FileUtils.rm_rf global.target_jdk_tarball
@@ -27,14 +27,14 @@ class Fetcher
   end
 
   def self.install_tomcat(global)
-    puts 'Installing Tomcat...'
+    puts "Tomcat をインストールします..."
     tmp_tomcat = fetch(global.tmp_tomcat_path, global.remote_tomcat_url)
 
     dir = File.dirname(global.target_tomcat_tarball)
     FileUtils.mkdir_p(dir)
     FileUtils.mv(tmp_tomcat, global.target_tomcat_tarball)
 
-    puts "Unpacking Tomcat to #{global.tomcat_dir}..."
+    puts "ダウンロードした Tomcat を #{global.tomcat_dir} に解凍します..."
     tar_output = SystemUtil.run_with_err_output "tar pxzf #{global.target_tomcat_tarball} -C #{global.tomcat_dir}"
 
     FileUtils.rm_rf global.target_tomcat_tarball
@@ -68,7 +68,7 @@ class Fetcher
   end
 
   def self.fetch(file_path, url)
-    puts "Downloading #{file_path} from #{url} ... "
+    puts "#{url} をダウンロードして #{file_path} に格納します... "
 
     dir = File.dirname(file_path)
     FileUtils.mkdir_p(dir)
