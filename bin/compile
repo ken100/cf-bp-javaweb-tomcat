@@ -8,5 +8,9 @@ $:.unshift File.expand_path('../../lib', __FILE__)
 require 'global'
 require 'java_web_tomcat_pack'
 
+puts "start compile"
+
 pack = JavaWebTomcatPack.new(Global.new(ARGV[0], ARGV[1]))
 pack.compile
+
+puts "end compile"
