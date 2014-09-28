@@ -8,12 +8,12 @@ class Fetcher
 
   def self.install_jdk(global)
     puts 'Installing JDK...'
-    #tmp_jdk = fetch(global.tmp_jdk_path, global.remote_jdk_url)
-    tmp_jdk = global.tmp_jdk_path
-    dir = File.dirname(tmp_jdk)
-    FileUtils.mkdir_p(dir)
-    puts "cp #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_jdk_url)} #{global.tmp_jdk_path}"
-    SystemUtil.run_with_err_output("cp #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_jdk_url)} #{global.tmp_jdk_path}")
+    tmp_jdk = fetch(global.tmp_jdk_path, global.remote_jdk_url)
+    #tmp_jdk = global.tmp_jdk_path
+    #dir = File.dirname(tmp_jdk)
+    #FileUtils.mkdir_p(dir)
+    #puts "cp #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_jdk_url)} #{global.tmp_jdk_path}"
+    #SystemUtil.run_with_err_output("cp #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_jdk_url)} #{global.tmp_jdk_path}")
 
     dir = File.dirname(global.target_jdk_tarball)
     FileUtils.mkdir_p(dir)
@@ -33,9 +33,9 @@ class Fetcher
 
   def self.install_tomcat(global)
     puts 'Installing Tomcat...'
-    #tmp_tomcat = fetch(global.tmp_tomcat_path, global.remote_tomcat_url)
-    tmp_tomcat = global.tmp_tomcat_path
-    SystemUtil.run_with_err_output("cp #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_tomcat_url)} #{global.tmp_tomcat_path}")
+    tmp_tomcat = fetch(global.tmp_tomcat_path, global.remote_tomcat_url)
+    #tmp_tomcat = global.tmp_tomcat_path
+    #SystemUtil.run_with_err_output("cp #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_tomcat_url)} #{global.tmp_tomcat_path}")
 
     dir = File.dirname(global.target_tomcat_tarball)
     FileUtils.mkdir_p(dir)
@@ -79,22 +79,23 @@ class Fetcher
 
     dir = File.dirname(file_path)
     FileUtils.mkdir_p(dir)
-    File.open(file_path, 'w') do |tf|
-      begin
-        Net::HTTP.get_response(URI.parse(url)) do |response|
-          unless response.is_a?(Net::HTTPSuccess)
-            puts 'Could not fetch file (%s): %s/%s' % [file_path, response.code, response.body]
-            return
-          end
+    #File.open(file_path, 'w') do |tf|
+    #  begin
+    #    Net::HTTP.get_response(URI.parse(url)) do |response|
+    #      unless response.is_a?(Net::HTTPSuccess)
+    #        puts 'Could not fetch file (%s): %s/%s' % [file_path, response.code, response.body]
+    #        return
+    #      end
 
-          response.read_body do |segment|
-            tf.write(segment)
-          end
-        end
-      ensure
-        tf.close
-      end
-    end
+    #      response.read_body do |segment|
+    #        tf.write(segment)
+    #      end
+    #    end
+    #  ensure
+    #    tf.close
+    #  end
+    #end
+    SystemUtil.run_with_err_output("cp #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(url)} #{file_path}")
     file_path
   end
 
