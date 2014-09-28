@@ -10,8 +10,8 @@ class Fetcher
     puts 'Installing JDK...'
     #tmp_jdk = fetch(global.tmp_jdk_path, global.remote_jdk_url)
     tmp_jdk = global.tmp_jdk_path
-    puts "cp -r #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_jdk_url)} #{global.tmp_jdk_path}"
-    SystemUtil.run_with_err_output("cp -r #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_jdk_url)} #{global.tmp_jdk_path}")
+    puts "cp #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_jdk_url)} #{global.tmp_jdk_path}"
+    SystemUtil.run_with_err_output("cp #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_jdk_url)} #{global.tmp_jdk_path}")
 
     dir = File.dirname(global.target_jdk_tarball)
     FileUtils.mkdir_p(dir)
@@ -33,7 +33,7 @@ class Fetcher
     puts 'Installing Tomcat...'
     #tmp_tomcat = fetch(global.tmp_tomcat_path, global.remote_tomcat_url)
     tmp_tomcat = global.tmp_tomcat_path
-    SystemUtil.run_with_err_output("cp -r #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_tomcat_url)} #{global.tmp_tomcat_path}")
+    SystemUtil.run_with_err_output("cp #{File.expand_path('../../downloads', __FILE__)}/#{File.basename(global.remote_tomcat_url)} #{global.tmp_tomcat_path}")
 
     dir = File.dirname(global.target_tomcat_tarball)
     FileUtils.mkdir_p(dir)
